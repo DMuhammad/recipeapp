@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState, useEffect } from "react";
 import "./App.css";
-import { searchRecipes, getFavouriteRecipes } from "./API";
+import { searchRecipes, getFavouriteRecipes, addFavouriteRecipe } from "./API";
 import { Recipe } from "./types";
 import RecipeCard from "./components/RecipeCard";
 import RecipeModal from "./components/RecipeModal";
@@ -55,7 +55,7 @@ const App = () => {
     }
   };
 
-  const addFavouriteRecipe = async (recipe: Recipe) => {
+  const addFavoriteRecipe = async (recipe: Recipe) => {
     try {
       await addFavouriteRecipe(recipe);
       setFavoriteRecipes([...favoriteRecipes, recipe]);
@@ -124,7 +124,7 @@ const App = () => {
                   recipe={recipe}
                   onClick={() => setSelectedRecipe(recipe)}
                   onFavouriteButtonClick={
-                    isFavourite ? removeFavouriteRecipe : addFavouriteRecipe
+                    isFavourite ? removeFavouriteRecipe : addFavoriteRecipe
                   }
                   isFavourite={isFavourite}
                 />
